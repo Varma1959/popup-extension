@@ -49,10 +49,30 @@ function show(data) {
   // Loop to access all rows
   for (var i = 0; i < data.leads.length; i++) {
     var r = data.leads[i];
-    tab += "<tr><td>" + r.name + "</td><td>" + r.phone + "</td></tr>";
+
+   tab += "<tr><td>" + r.name + "</td><td><a href='javascript:void(0);' onclick=' onMobileNumberClick(\"" + r.phone + "\")'>" + r.phone + "</a></td></tr>";
   }
+
+  //   tab += "<tr><td>" + r.name + "</td><td>" + r.phone + "</td></tr>";
+  // }
 
   // Setting innerHTML as tab variable
   var employeesElement = document.getElementById("employees");
   employeesElement.innerHTML = tab;
 }
+
+// function handlePhoneClick(phoneNumber) {
+//   alert("Clicked on phone number: " + phoneNumber);
+//   // You can replace the alert with your desired action
+// }
+
+ function onMobileNumberClick (phone, message) {
+   var message =
+     "Good Morning!\r\nHope you are doing well, We are connected with you over linkedin, I am *Shyam Mohan K, Founder \u0026 CEO at RazorOps, Inc.*  I like to Introduce RazorOps - The Simplest Container Native SaaS CI/CD platform! 🚀 \r\n\r\nWe recently helped an AI/ML, edTech, FinTech and Gaming companies to scale infra and CICD process to ship code changes fast. I want to see if there is any opportunity where you can use RazorOps DevOps Solution to automation CI/CD process.\r\n \r\n*Schedule a meeting*, In case if you like to know more or Start a *FREE POC https://bit.ly/3YEEtQy*  \r\n\r\nThanks \u0026 regards,\r\nShyam Mohan K (Founder \u0026 CEO)\r\n";
+   var url =
+     "https://api.whatsapp.com/send?phone=" +
+     phone +
+     "&text=" +
+     encodeURIComponent(message); // Change "message" to "Hi"
+   window.open(url, "_blank");
+ };
