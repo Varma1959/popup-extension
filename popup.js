@@ -58,7 +58,7 @@ function show(data) {
       "</a></td></tr>";
   }
 
-  var employeesElement = document.getElementById("employees");
+  var employeesElement = document.getElementById("leads");
   employeesElement.innerHTML = tab;
 
   // Attach event listeners to phone number links
