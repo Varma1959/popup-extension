@@ -79,5 +79,31 @@ function onMobileNumberClick(event) {
     phone +
     "&text=" +
     encodeURIComponent(message);
-  window.open(url, "_blank");
+
+  // Get the current tab's ID
+  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+    if (tabs.length > 0) {
+      // Update the current tab's URL
+      chrome.tabs.update(tabs[0].id, { url: url });
+    }
+  });
 }
+
+
+
+
+
+
+
+
+// function onMobileNumberClick(event) {
+//   event.preventDefault();
+//   const phone = event.target.getAttribute("data-phone");
+//   const message = decodeURIComponent(event.target.getAttribute("data-message"));
+//   const url =
+//     "https://api.whatsapp.com/send?phone=" +
+//     phone +
+//     "&text=" +
+//     encodeURIComponent(message);
+//   window.open(url, "_blank");
+// }
