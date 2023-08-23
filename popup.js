@@ -53,6 +53,8 @@ function show(data) {
       r.name +
       "</td><td><a href='javascript:void(0);' data-phone='" +
       r.phone +
+      "' data-message='" +
+      encodeURIComponent(data.message) +
       "'>" +
       r.phone +
       "</a></td></tr>";
@@ -71,8 +73,7 @@ function show(data) {
 function onMobileNumberClick(event) {
   event.preventDefault();
   const phone = event.target.getAttribute("data-phone");
-  const message =
-    " Good day there, I'm Prasanna Varma, Frontend Developer from Hyderabad";
+  const message = decodeURIComponent(event.target.getAttribute("data-message"));
   const url =
     "https://api.whatsapp.com/send?phone=" +
     phone +
