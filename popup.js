@@ -75,19 +75,15 @@ function onMobileNumberClick(event) {
   const phone = event.target.getAttribute("data-phone");
   const message = decodeURIComponent(event.target.getAttribute("data-message"));
   const url =
-    "https://api.whatsapp.com/send?phone=" +
+    "https://web.whatsapp.com/send?phone=" +
     phone +
     "&text=" +
     encodeURIComponent(message);
 
-  // Get the current tab's ID
-  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-    if (tabs.length > 0) {
-      // Update the current tab's URL
-      chrome.tabs.update(tabs[0].id, { url: url });
-    }
-  });
+  // Open a new window with the WhatsApp Web URL
+  chrome.windows.create({ url: url, type: "popup" });
 }
+
 
 
 
